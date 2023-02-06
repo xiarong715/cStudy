@@ -1,7 +1,11 @@
 #include <stdio.h>
 #include <string>
+#include <unistd.h>
+#include <dirent.h>
 
 std::string findDirName(std::string path) {
+    if (path == "") return path;
+    if (opendir(path.c_str())) return path;
     int len = path.length();
     int i = 0;
     for (i = len - 1; i >=0; i--) {
